@@ -110,8 +110,8 @@ const products = [
     price: 14900,
     originalPrice: 36900,
     discount: "59% Off",
-    image: "/light-grey-nordic-sofa.png",
-    hoverImage: "/light-grey-nordic-sofa-side.png",
+    image: "/ssss.webp",
+    hoverImage: "/sssshover.webp",
     badge: "Store Exclusive",
   },
 ]

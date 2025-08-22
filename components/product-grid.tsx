@@ -23,7 +23,7 @@ const products = [
     originalPrice: 79000,
     discount: "60% Off",
     image: "/grey-fabric-round-ottoman.png",
-    hoverImage: "/placeholder-547om.png",
+    hoverImage: "/maimi.jpg",
     badge: "Store Exclusive",
   },
   {

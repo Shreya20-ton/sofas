@@ -169,24 +169,47 @@ export function ProductGrid({ searchQuery, selectedFilters, priceRange, sortBy, 
     return filtered
   }, [searchQuery, selectedFilters, priceRange, sortBy])
 
-  const gridClasses =
-    viewMode === "grid" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" : "flex flex-col gap-6"
+  const getGridClasses = () => {
+    switch (viewMode) {
+      case "grid":
+        return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      case "list":
+        return "flex flex-col gap-6"
+      default:
+        return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    }
+  }
+
+  const getImageHeight = () => {
+    switch (viewMode) {
+      case "grid":
+        return "h-64"
+      case "list":
+        return "h-48"
+      default:
+        return "h-64"
+    }
+  }
 
   return (
-    <div className={gridClasses}>
+    <div className={getGridClasses()}>
       {filteredAndSortedProducts.map((product) => (
         <div
           key={product.id}
-          className="group cursor-pointer"
+          className="group"
           onMouseEnter={() => setHoveredProduct(product.id)}
           onMouseLeave={() => setHoveredProduct(null)}
         >
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100">
-            <div className="relative overflow-hidden">
+          <div
+            className={`bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 ${
+              viewMode === "list" ? "flex flex-row" : ""
+            }`}
+          >
+            <div className={`relative overflow-hidden ${viewMode === "list" ? "w-48 flex-shrink-0" : ""}`}>
               <img
                 src={hoveredProduct === product.id ? product.hoverImage : product.image || "/placeholder.svg"}
                 alt={product.name}
-                className="w-full h-64 object-cover transition-all duration-200"
+                className={`w-full ${getImageHeight()} object-cover transition-all duration-200`}
               />
               {product.badge && (
                 <Badge className="absolute top-3 left-3 bg-green-600 text-white text-xs px-2 py-1">
@@ -200,12 +223,20 @@ export function ProductGrid({ searchQuery, selectedFilters, priceRange, sortBy, 
               )}
             </div>
 
-            <div className="p-4 space-y-2">
-              <h3 className="font-medium text-sm leading-tight text-gray-800 line-clamp-2">{product.name}</h3>
+            <div className={`p-4 space-y-2 ${viewMode === "list" ? "flex-1" : ""}`}>
+              <h3
+                className={`font-medium leading-tight text-gray-800 line-clamp-2 ${
+                  viewMode === "list" ? "text-sm" : "text-base"
+                }`}
+              >
+                {product.name}
+              </h3>
               <p className="text-xs text-gray-500">{product.brand}</p>
 
               <div className="flex items-center gap-2 pt-1">
-                <span className="text-lg font-bold text-gray-900">₹{product.price.toLocaleString()}</span>
+                <span className={`font-bold text-gray-900 ${viewMode === "list" ? "text-lg" : "text-xl"}`}>
+                  ₹{product.price.toLocaleString()}
+                </span>
                 {product.originalPrice && (
                   <span className="text-sm text-gray-400 line-through">₹{product.originalPrice.toLocaleString()}</span>
                 )}

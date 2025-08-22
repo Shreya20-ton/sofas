@@ -64,6 +64,7 @@ export function ProductToolbar({
               size="sm"
               onClick={() => onViewModeChange("grid")}
               className={viewMode === "grid" ? "bg-cyan-600 text-white" : ""}
+              title="Standard Grid"
             >
               <Grid3X3 className="h-4 w-4" />
             </Button>
@@ -72,6 +73,7 @@ export function ProductToolbar({
               size="sm"
               onClick={() => onViewModeChange("list")}
               className={viewMode === "list" ? "bg-cyan-600 text-white" : ""}
+              title="List View"
             >
               <List className="h-4 w-4" />
             </Button>

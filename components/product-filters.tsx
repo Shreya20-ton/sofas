@@ -124,10 +124,15 @@ export function ProductFilters({
 
   return (
     <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-      <div className="flex items-center gap-2 mb-6">
-        <Filter className="h-5 w-5" />
-        <span className="font-serif font-semibold">Filter</span>
-        <span className="text-gray-500 ml-auto">{getFilteredProductCount()} products</span>
+      <div className="border border-gray-300 rounded-md p-3 mb-2 hover:bg-red-500 hover:text-white transition-all duration-300 group w-fit">
+        <div className="flex items-center gap-2">
+          <Filter className="h-5 w-5 group-hover:text-white" />
+          <span className="font-serif font-semibold">Filter</span>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <span className="text-gray-500">{getFilteredProductCount()} products</span>
       </div>
 
       <div className="space-y-4">

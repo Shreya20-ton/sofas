@@ -103,6 +103,17 @@ const products = [
     hoverImage: "/light-grey-nordic-sofa-side.png",
     badge: "Store Exclusive",
   },
+  {
+    id: 10,
+    name: "Paddington Fabric Sofa In Brown Color",
+    brand: "HOMETOWN",
+    price: 14900,
+    originalPrice: 36900,
+    discount: "59% Off",
+    image: "/light-grey-nordic-sofa.png",
+    hoverImage: "/light-grey-nordic-sofa-side.png",
+    badge: "Store Exclusive",
+  },
 ]
 
 interface ProductGridProps {

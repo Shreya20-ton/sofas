@@ -12,7 +12,7 @@ const products = [
     originalPrice: 71200,
     discount: "59% Off",
     image: "/teal-velvet-sofa-modern.png",
-    hoverImage: "/placeholder-wu3fm.png",
+    hoverImage: "/sofaseagreen.webp",
     badge: "Store Exclusive",
   },
   {
